@@ -1,4 +1,4 @@
-import { getDeviceInfo, addProperty, removeProperty } from "../index";
+import { getDeviceInfo, addProperty, removeProperties } from "../index";
 
 describe("UaInfo Module", () => {
   test("getDeviceInfo should return device info", () => {
@@ -13,9 +13,9 @@ describe("UaInfo Module", () => {
     expect(obj).toHaveProperty("newProp", "value");
   });
 
-  test("removeProperty should remove a property from the object", () => {
+  test("removeProperties should remove a property from the object", () => {
     const obj = { propToRemove: "value" };
-    removeProperty(obj, "propToRemove");
+    removeProperties(obj, "propToRemove");
     expect(obj).not.toHaveProperty("propToRemove");
   });
 });

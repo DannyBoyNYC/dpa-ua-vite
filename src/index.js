@@ -1,3 +1,3 @@
-import { getDeviceInfo, addProperty, removeProperty } from "./ua-info";
+import { getDeviceInfo, addProperty, removeProperties } from "./ua-info";
 
-export { getDeviceInfo, addProperty, removeProperty };
+export { getDeviceInfo, addProperty, removeProperties };

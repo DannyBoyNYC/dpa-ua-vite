@@ -1,19 +1,24 @@
 {
-  "name": "dpa-ua-vite",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@deverell/uainfo",
+  "version": "0.1.7",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "author": "Daniel",
   "type": "module",
   "scripts": {
     "clean": "rm -rf ./dist",
-    "dev": "npm run clean && vite build",
+    "dev": "npm run clean && npm run build && npm run start",
     "build": "rollup --config",
     "build:watch": "rollup --config -w",
+    "test": "jest",
+    "testwatch": "jest -w",
     "preview": "vite preview",
     "start": "vite"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
     "babel-jest": "^29.7.0",
@@ -24,14 +29,7 @@
     "rollup": "^4.24.4",
     "vite": "^5.4.1"
   },
-  "exports": {
-    ".": {
-      "import": "./dist/uainfo.js",
-      "require": "./dist/uainfo.umd.js"
-    }
-  },
   "dependencies": {
-    "@rollup/plugin-babel": "^6.0.4",
     "bowser": "^2.11.0"
   }
 }

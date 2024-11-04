@@ -107,7 +107,7 @@ export const addProperty = (paramLabel, paramValue) => {
   customProperties[paramLabel] = paramValue;
 };
 
-export const removeProperty = () => {
+export const removeProperties = () => {
   customProperties = {};
 };
 

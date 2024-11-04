@@ -1,5 +1,5 @@
 import { nodeResolve } from "@rollup/plugin-node-resolve";
-import terser from "@rollup/plugin-terser";
+// import terser from "@rollup/plugin-terser";
 import babel from "@rollup/plugin-babel";
 
 export default {
@@ -7,7 +7,7 @@ export default {
   output: {
     file: "./dist/index.js",
     format: "umd",
-    name: "usinfo",
+    name: "uainfo",
     globals: {
       bowser: "bowser",
     },
@@ -15,10 +15,10 @@ export default {
   },
   plugins: [
     nodeResolve(),
-    babel({
-      babelHelpers: "bundled",
-      exclude: "node_modules/**", // Only transpile our source code
-    }),
-    terser(),
+    // babel({
+    //   babelHelpers: "bundled",
+    //   exclude: "node_modules/**", // Only transpile our source code
+    // }),
+    // terser(),
   ],
 };
