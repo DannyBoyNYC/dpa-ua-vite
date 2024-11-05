@@ -1,10 +1,10 @@
 import Bowser from "bowser";
 
-export class UaInfo {
+class UaInfo {
   #deviceInfo = [];
 
-  constructor(protocolVersion = 3) {
-    this.protocolVersion = protocolVersion;
+  constructor(protocolVersion) {
+    this.protocolVersion = 3;
     if (UaInfo.instance) {
       throw new Error("Use UaInfo.getInstance() to access UA data.");
     }
@@ -27,9 +27,6 @@ export class UaInfo {
   add(item) {
     this.#deviceInfo.push(item);
   }
-  //   delete(item) {}
-  //   find(text) {}
-  //   replaceList(list) {}
 }
 
 const uaItems = UaInfo.getInstance();
@@ -114,11 +111,11 @@ export const removeProperties = () => {
 export const getDeviceInfo = () => {
   let uuid = self.crypto.randomUUID();
 
-  if (protocolVersion) {
-    uaData.protocolVersion = protocolVersion;
-  }
+  // if (protocolVersion) {
+  //   uaData.protocolVersion = protocolVersion;
+  // }
 
-  return { uuid, uaData, customProperties };
+  return { uuid, ...uaData, customProperties };
 };
 // Apply Observer mixin to the TodoList
 // Object.assign copies all enumerable own properties from one or more source objects to a target object

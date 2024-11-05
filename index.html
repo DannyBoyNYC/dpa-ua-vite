@@ -11,9 +11,10 @@
     <div id="app"></div>
     <script type="module" src="./src/index.js"></script>
     <script type="module" src="./sandbox/main.js"></script>
-    <script defer>
-      const data = uainfo.getDeviceInfo();
-      console.log(data);
+    <script defer type="module">
+      import { getDeviceInfo } from "./dist/index.js";
+      const data = getDeviceInfo();
+      console.log("getting uainfo.getDeviceInfo", data);
     </script>
   </body>
 </html>
