@@ -1,6 +1,6 @@
 {
   "name": "@devereld/uainfo",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "author": "Daniel",
