@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ua info test</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>Testing UA Parser</h1>
+    </div>
+    <script type="module">
+      import {
+        getDeviceInfo,
+        addProperty,
+        removeProperties,
+      } from "../dist/index.js";
+      let data = getDeviceInfo();
+      addProperty("test", "test");
+      console.log("1 getting getDeviceInfo", data);
+
+      removeProperties();
+      console.log("2 getting getDeviceInfo", data);
+    </script>
+  </body>
+</html>

@@ -1,12 +1,12 @@
 import Bowser from "bowser";
 
-class UaInfo {
+export default class UaInfo {
   #deviceInfo = [];
 
   constructor(protocolVersion) {
     this.protocolVersion = 3;
     if (UaInfo.instance) {
-      throw new Error("Use UaInfo.getInstance() to access UA data.");
+      throw new Error("Use UaInfo.getInstance() to access UA data");
     }
   }
 
@@ -56,7 +56,6 @@ try {
 }
 
 const nav = window.navigator;
-
 const browser = Bowser.getParser(nav.userAgent);
 
 const browser_name = browser.getBrowserName();
@@ -100,23 +99,50 @@ uaItems.add({
 const uaData = uaItems.items[0];
 let customProperties = {};
 
-export const addProperty = (paramLabel, paramValue) => {
+function addProperty(paramLabel, paramValue) {
+  if (typeof paramLabel !== "string") {
+    paramLabel = String(paramLabel);
+  }
+  if (typeof paramValue !== "string") {
+    paramValue = String(paramValue);
+  }
   customProperties[paramLabel] = paramValue;
-};
+  console.log("1", uaData.customProperties);
+  return customProperties;
+}
 
-export const removeProperties = () => {
+function removeProperties() {
+  if (Object.keys(customProperties).length === 0) return;
   customProperties = {};
-};
+  console.log("2", uaData.customProperties);
+}
 
-export const getDeviceInfo = () => {
-  let uuid = self.crypto.randomUUID();
+function setProtocolVersion(version) {
+  uaItems.protocolVersion = version;
+}
 
-  // if (protocolVersion) {
-  //   uaData.protocolVersion = protocolVersion;
-  // }
+function generateGuid() {
+  if (self?.crypto?.randomUUID) {
+    return self.crypto.randomUUID();
+  } else {
+    console.error("self.crypto is not supported in this environment");
+  }
+}
+
+function getDeviceInfo(protocolVersion) {
+  let uuid = generateGuid();
+
+  if (protocolVersion) {
+    uaData.protocolVersion = protocolVersion;
+  }
 
   return { uuid, ...uaData, customProperties };
+}
+
+export {
+  getDeviceInfo,
+  addProperty,
+  setProtocolVersion,
+  removeProperties,
+  generateGuid,
 };
-// Apply Observer mixin to the TodoList
-// Object.assign copies all enumerable own properties from one or more source objects to a target object
-// Object.assign(TodoList.prototype, observerMixin);
